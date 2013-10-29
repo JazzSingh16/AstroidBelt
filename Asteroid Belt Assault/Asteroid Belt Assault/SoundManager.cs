@@ -14,7 +14,7 @@ namespace Asteroid_Belt_Assault
     {
         private static List<SoundEffect> explosions = new
             List<SoundEffect>();
-        private static int explosionCount = 4;
+        private static int explosionCount = 4; 
 
         private static SoundEffect playerShot;
         private static SoundEffect enemyShot;
@@ -27,8 +27,8 @@ namespace Asteroid_Belt_Assault
         {
             try
             {
-                playerShot = content.Load<SoundEffect>(@"Sounds\Shot1");
-                enemyShot = content.Load<SoundEffect>(@"Sounds\Shot2");
+                playerShot = content.Load<SoundEffect>(@"Sounds\Laser");
+                enemyShot = content.Load<SoundEffect>(@"Sounds\LaserCannon");
                 playerDeath = content.Load<SoundEffect>(@"Sounds\SadTrombone");
 
                 for (int x = 1; x <= explosionCount; x++)

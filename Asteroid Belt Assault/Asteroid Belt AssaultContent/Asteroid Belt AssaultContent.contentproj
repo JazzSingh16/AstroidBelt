@@ -48,11 +48,6 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="Sounds\Shot1.wav">
-      <Name>Shot1</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
     <Compile Include="Sounds\Shot2.wav">
       <Name>Shot2</Name>
       <Importer>WavImporter</Importer>
@@ -78,6 +73,20 @@
     <Compile Include="Sounds\SadTrombone.mp3">
       <Name>SadTrombone</Name>
       <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sounds\Laser.mp3">
+      <Name>Laser</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sounds\LaserCannon.wav">
+      <Name>LaserCannon</Name>
+      <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
