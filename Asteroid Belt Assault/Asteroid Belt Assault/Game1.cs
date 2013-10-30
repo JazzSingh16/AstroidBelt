@@ -126,6 +126,8 @@ namespace Asteroid_Belt_Assault
                 explosionManager);
 
             SoundManager.Initialize(Content);
+            EffectManager.Initialize(graphics, Content);
+            EffectManager.LoadContent();
 
             pericles14 = Content.Load<SpriteFont>(@"Fonts\Pericles14");
 
@@ -248,6 +250,8 @@ namespace Asteroid_Belt_Assault
 
             }
 
+            EffectManager.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -310,6 +314,8 @@ namespace Asteroid_Belt_Assault
 
 
             spriteBatch.End();
+
+            EffectManager.Draw();
 
             base.Draw(gameTime);
         }

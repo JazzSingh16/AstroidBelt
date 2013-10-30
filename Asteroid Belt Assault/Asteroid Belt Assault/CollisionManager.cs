@@ -62,12 +62,6 @@ namespace Asteroid_Belt_Assault
                     {
                         shot.Location = offScreen;
                         asteroid.Velocity += shotToAsteroidImpact;
-                        explosionManager.AddExplosion(
-                            asteroid.Center,
-                            asteroid.Velocity / 10);
-                        asteroid.Location = offScreen;
-                        playerManager.PlayerScore += 10;
-                        asteroid.Destroyed = true;
                     }
                 }
             }

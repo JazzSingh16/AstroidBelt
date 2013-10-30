@@ -71,6 +71,8 @@ namespace Asteroid_Belt_Assault
                 new Vector2(pieceRectangles[0].Width / 2,
                     pieceRectangles[0].Height / 2);
 
+            EffectManager.Effect("BasicExplosionWithTrails2").Trigger(location);
+
             int pieces = rand.Next(minPieceCount, maxPieceCount + 1);
             for (int x = 0; x < pieces; x++)
             {

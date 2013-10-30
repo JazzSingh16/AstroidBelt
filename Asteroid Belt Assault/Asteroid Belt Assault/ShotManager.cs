@@ -75,6 +75,8 @@ namespace Asteroid_Belt_Assault
             for (int x = Shots.Count - 1; x >= 0; x--)
             {
                 Shots[x].Update(gameTime);
+                EffectManager.Effect("NewPulseTracker").Trigger(Shots[x].Center);
+
                 if (!screenBounds.Intersects(Shots[x].Destination))
                 {
                     Shots.RemoveAt(x);
