@@ -107,6 +107,7 @@
     <Compile Include="SoundManager.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="StarField.cs" />
+    <Compile Include="TrigHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

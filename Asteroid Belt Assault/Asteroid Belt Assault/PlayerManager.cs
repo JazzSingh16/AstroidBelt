@@ -14,11 +14,13 @@ namespace Asteroid_Belt_Assault
         private float playerSpeed = 300.0f;
         private Rectangle playerAreaLimit;
 
+        float angle = 0;
+
         public long PlayerScore = 0;
         public int LivesRemaining = 3;
         public bool Destroyed = false;
 
-        private Vector2 gunOffset = new Vector2(25, 10);
+        private Vector2 gunOffset = new Vector2(-3, 0);
         private float shotTimer = 0.0f;
         private float minShotTimer = 0.15f;
         private int playerRadius = 15;
@@ -67,9 +69,11 @@ namespace Asteroid_Belt_Assault
         {
             if (shotTimer >= minShotTimer)
             {
+                Vector2 vel = new Vector2((float)Math.Sin(playerSprite.Rotation), -(float)Math.Cos(playerSprite.Rotation));
+
                 PlayerShotManager.FireShot(
-                    playerSprite.Location + gunOffset,
-                    new Vector2(0, -1),
+                    playerSprite.Center + vel * 10 + gunOffset,
+                    vel,
                     true);
                 shotTimer = 0.0f;
             }
@@ -79,7 +83,9 @@ namespace Asteroid_Belt_Assault
         {
             if (keyState.IsKeyDown(Keys.Up))
             {
-                playerSprite.Velocity += new Vector2(0, -1);
+                Vector2 vel = TrigHelper.AngleToVector(playerSprite.Rotation);
+
+                playerSprite.Velocity += vel;
             }
 
             if (keyState.IsKeyDown(Keys.Down))
@@ -101,8 +107,18 @@ namespace Asteroid_Belt_Assault
             {
                 FireShot();
             }
+            if (keyState.IsKeyDown(Keys.A))
+            {
+                angle += -.05f;
+                playerSprite.Rotation = angle;
+            }
+            if (keyState.IsKeyDown(Keys.D))
+            {
+                angle += .05f;
+                playerSprite.Rotation = angle;
+            }
         }
-
+            
         private void HandleGamepadInput(GamePadState gamePadState)
         {
             playerSprite.Velocity +=
