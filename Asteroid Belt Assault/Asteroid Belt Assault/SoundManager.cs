@@ -22,8 +22,6 @@ namespace Asteroid_Belt_Assault
 
         private static Song music;
 
-        private static SoundEffect playerDeath;
-
         private static Random rand = new Random();
 
         public static void Initialize(ContentManager content)
@@ -32,7 +30,6 @@ namespace Asteroid_Belt_Assault
             {
                 playerShot = content.Load<SoundEffect>(@"Sounds\Laser");
                 enemyShot = content.Load<SoundEffect>(@"Sounds\LaserCannon");
-                playerDeath = content.Load<SoundEffect>(@"Sounds\SadTrombone");
                 music = content.Load<Song>(@"Sounds\Skrillex");
 
                 for (int x = 1; x <= explosionCount; x++)
@@ -50,6 +47,7 @@ namespace Asteroid_Belt_Assault
 
         public static void PlayMusic()
         {
+            MediaPlayer.Volume = 1f;
             MediaPlayer.Play(music);
             
         }
@@ -66,17 +64,6 @@ namespace Asteroid_Belt_Assault
             }
         }
 
-        public static void PlayPlayerDeath()
-        {
-            try
-            {
-                playerDeath.Play();
-            }
-            catch
-            {
-                Debug.Write("PlayPlayerDeath Failed");
-            }
-        }
 
         public static void PlayPlayerShot()
         {

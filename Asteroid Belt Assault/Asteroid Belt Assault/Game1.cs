@@ -131,6 +131,7 @@ namespace Asteroid_Belt_Assault
 
             pericles14 = Content.Load<SpriteFont>(@"Fonts\Pericles14");
 
+            //SoundManager.PlayMusic();
 
             // TODO: use this.Content to load your game content here
         }
