@@ -29,12 +29,13 @@ namespace Asteroid_Belt_Assault
         PlayerManager playerManager;
         EnemyManager enemyManager;
         ExplosionManager explosionManager;
-
+        PowerupManager powerupManager;
+       
         CollisionManager collisionManager;
 
         SpriteFont pericles14;
 
-        private float playerDeathDelayTime = 4f;
+        private float playerDeathDelayTime = 2f;
         private float playerDeathTimer = 0f;
         private float titleScreenTimer = 0f;
         private float titleScreenDelayTime = 1f;
@@ -125,6 +126,10 @@ namespace Asteroid_Belt_Assault
                 enemyManager,
                 explosionManager);
 
+            powerupManager = new PowerupManager(
+                spriteSheet, playerManager);
+
+
             SoundManager.Initialize(Content);
             EffectManager.Initialize(graphics, Content);
             EffectManager.LoadContent();
@@ -199,6 +204,7 @@ namespace Asteroid_Belt_Assault
                     playerManager.Update(gameTime);
                     enemyManager.Update(gameTime);
                     explosionManager.Update(gameTime);
+                    powerupManager.Update(gameTime);
                     collisionManager.CheckCollisions();
 
                     if (playerManager.Destroyed)
@@ -227,6 +233,7 @@ namespace Asteroid_Belt_Assault
                     enemyManager.Update(gameTime);
                     playerManager.PlayerShotManager.Update(gameTime);
                     explosionManager.Update(gameTime);
+                    powerupManager.Update(gameTime);
 
                     if (playerDeathTimer >= playerDeathDelayTime)
                     {
@@ -283,6 +290,7 @@ namespace Asteroid_Belt_Assault
                 playerManager.Draw(spriteBatch);
                 enemyManager.Draw(spriteBatch);
                 explosionManager.Draw(spriteBatch);
+                powerupManager.Draw(spriteBatch);
 
                 spriteBatch.DrawString(
                     pericles14,

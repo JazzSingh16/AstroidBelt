@@ -18,13 +18,13 @@ namespace Asteroid_Belt_Assault
             this.spriteSheet = spriteSheet;
             this.playerManager = playerManager;
 
-            // Remove this later
+            
             SpawnPowerup();
         }
 
         public void SpawnPowerup()
         {
-            Powerups.Add(new Sprite(new Vector2(300, 300), spriteSheet, new Rectangle(379, 202, 55, 55), Vector2.Zero));
+            Powerups.Add(new Sprite(new Vector2(55, 272), spriteSheet, new Rectangle(55, 272, 65, 65), Vector2.Zero));
         }
 
         public void Update(GameTime gameTime)
