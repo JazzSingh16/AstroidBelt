@@ -28,6 +28,8 @@ namespace Asteroid_Belt_Assault
         protected Vector2 location = Vector2.Zero;
         protected Vector2 velocity = Vector2.Zero;
 
+       
+
         public Sprite(
             Vector2 location,
             Texture2D texture,
@@ -37,6 +39,7 @@ namespace Asteroid_Belt_Assault
             this.location = location;
             Texture = texture;
             this.velocity = velocity;
+            
 
             frames.Add(initialFrame);
             frameWidth = initialFrame.Width;

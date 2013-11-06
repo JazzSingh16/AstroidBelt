@@ -8,11 +8,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Asteroid_Belt_Assault
 {
+    enum WeaponSelection
+    {
+        ONESHOT,
+        MULTISHOT
+    }
+
     class PlayerManager
     {
         public Sprite playerSprite;
         private float playerSpeed = 300.0f;
         private Rectangle playerAreaLimit;
+
 
         float angle = 0;
 
@@ -25,6 +32,7 @@ namespace Asteroid_Belt_Assault
         private float minShotTimer = 0.15f;
         private int playerRadius = 15;
         public ShotManager PlayerShotManager;
+        public WeaponSelection weapon;
 
         public PlayerManager(
             Texture2D texture,  
@@ -32,6 +40,8 @@ namespace Asteroid_Belt_Assault
             int frameCount,
             Rectangle screenBounds)
         {
+            weapon = WeaponSelection.ONESHOT;
+
             playerSprite = new Sprite(
                 new Vector2(500, 500),
                 texture,
@@ -67,15 +77,41 @@ namespace Asteroid_Belt_Assault
 
         private void FireShot()
         {
+            Vector2 vel;
+
             if (shotTimer >= minShotTimer)
             {
-                Vector2 vel = new Vector2((float)Math.Sin(playerSprite.Rotation), -(float)Math.Cos(playerSprite.Rotation));
+                switch (weapon)
+                {
+                    case WeaponSelection.MULTISHOT:
 
-                PlayerShotManager.FireShot(
-                    playerSprite.Center + vel * 10 + gunOffset,
-                    vel,
-                    true);
+                        for (int x = -10; x < 10; x++)
+                        {
+                            vel = new Vector2((float)Math.Sin(playerSprite.Rotation + MathHelper.Pi / 180 * x * 2), -(float)Math.Cos(playerSprite.Rotation + MathHelper.Pi / 180 * x * 3));
+
+                            PlayerShotManager.FireShot(
+                                playerSprite.Center + vel * 10 + gunOffset,
+                                vel,
+                                true);
+                        }
+
+                        break;
+
+                    case WeaponSelection.ONESHOT:
+
+                        vel = new Vector2((float)Math.Sin(playerSprite.Rotation), -(float)Math.Cos(playerSprite.Rotation));
+
+                        PlayerShotManager.FireShot(
+                            playerSprite.Center + vel * 10 + gunOffset,
+                            vel,
+                            true);
+  
+                      
+                       break;
+                }
+
                 shotTimer = 0.0f;
+                
             }
         }
 
